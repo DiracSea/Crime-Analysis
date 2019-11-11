@@ -66,6 +66,7 @@ public class wordCount {
                 .map(data -> data._1 + " " + data._2);
 
         ave.saveAsTextFile(output);
+        ave.collect(); 
 
         //stop sc
         sc.stop();
@@ -83,7 +84,9 @@ public class wordCount {
         //word count
         JavaPairRDD<String, Integer> pair = in1
                 .map(s -> s.split(","))
-                .mapToPair(s -> new Tuple2<>(s[5], s[num].substring(8)))
+                .mapToPair(s -> new Tuple2<>(s[5], s[num]))
+                .filter(s -> s._2.length()>12)
+                .mapValues(s -> s.substring(8))
                 .filter(s -> s._1.equals(pType))
                 .mapToPair(s -> new Tuple2<>(s._2, 1))
                 .reduceByKey((x, y) -> x+y);  // x
@@ -92,6 +95,7 @@ public class wordCount {
                 .map(data -> data._1 + " " + data._2);
 
         ave.saveAsTextFile(output);
+        ave.collect(); 
 
         //stop sc
         sc.stop();
@@ -130,6 +134,7 @@ public class wordCount {
                 .map(data -> data._1 + " " + data._2);
 
         ave.saveAsTextFile(output);
+        ave.collect(); 
 
         //stop sc
         sc.stop();

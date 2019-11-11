@@ -7,7 +7,8 @@ This is a course project :sparkles:
 
 ## **Data Preprocessing** :thermometer: 
 use spark to pre-precrossing data and get some statistical results. :fire::fire::fire:
- - [ ] Spark Code
+ - [x] Spark Code: 
+spark-submit --class pre_process.execute target/lsu018-1.0-SNAPSHOT.jar /data/data/crime.csv THEFT /data/output/ward /data/output/block /data/output/district /data/output/month /data/output/day /data/output/location /data/output/community
  - [x] ~~Data Cleansing, got from database, do not need cleansing~~
  - [ ] Data Reduction 
  - [ ] Data Transformation

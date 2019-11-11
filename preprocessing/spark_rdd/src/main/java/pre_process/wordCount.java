@@ -55,7 +55,7 @@ public class wordCount {
         //word count
 
         int finalNum = num;
-        JavaPairRDD<String, Integer> pair = in
+        JavaPairRDD<String, Integer> pair = in1
                 .map(s -> s.split(","))
                 .mapToPair(s -> new Tuple2<>(s[5], s[finalNum]))
                 .filter(s -> s._1.equals(pType))
@@ -81,7 +81,7 @@ public class wordCount {
         String header = in.first();
         JavaRDD<String> in1 = in.filter(s -> s != header);
         //word count
-        JavaPairRDD<String, Integer> pair = in
+        JavaPairRDD<String, Integer> pair = in1
                 .map(s -> s.split(","))
                 .mapToPair(s -> new Tuple2<>(s[5], s[num].substring(8)))
                 .filter(s -> s._1.equals(pType))
@@ -120,7 +120,7 @@ public class wordCount {
 
         int finalI = i;
         int finalJ = j;
-        JavaPairRDD<String, Integer> pair = in
+        JavaPairRDD<String, Integer> pair = in1
                 .map(s -> s.split(","))
                 .mapToPair(s -> new Tuple2<>(s[5], s[num].substring(finalI, finalJ)))
                 .filter(s -> s._1.equals(pType))

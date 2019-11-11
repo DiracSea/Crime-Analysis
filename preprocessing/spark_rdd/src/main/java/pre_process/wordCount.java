@@ -63,10 +63,10 @@ public class wordCount {
                 .reduceByKey((x, y) -> x+y);  // x 1st element, y 2nd element
 
         JavaRDD<String> ave = pair
-                .map(data -> data._1 + " " + data._2);
+                .map(data -> data._1 + " " + data._2)
+                .coalesce(1);
 
         ave.saveAsTextFile(output);
-        ave.collect(); 
 
         //stop sc
         sc.stop();
@@ -92,10 +92,10 @@ public class wordCount {
                 .reduceByKey((x, y) -> x+y);  // x
 
         JavaRDD<String> ave = pair
-                .map(data -> data._1 + " " + data._2);
+                .map(data -> data._1 + " " + data._2)
+                .coalesce(1);
 
         ave.saveAsTextFile(output);
-        ave.collect(); 
 
         //stop sc
         sc.stop();
@@ -105,7 +105,8 @@ public class wordCount {
         // ID:0; case:1; data:2; block:3; pType:5; desc:6; location:7; district:11; ward:12; community:13
 
         // 11/02/2019 11:59:00 PM
-        int i = 0, j = "11/02/2019 11:59:00 PM".length();
+        int l = "11/02/2019 11:59:00 PM".length(); 
+        int i = 0, j = l;
         switch (type) {
             case month:
                 j = 5;
@@ -126,15 +127,18 @@ public class wordCount {
         int finalJ = j;
         JavaPairRDD<String, Integer> pair = in1
                 .map(s -> s.split(","))
-                .mapToPair(s -> new Tuple2<>(s[5], s[num].substring(finalI, finalJ)))
+                .mapToPair(s -> new Tuple2<>(s[5], s[num]))
+                .filter(s -> s._2().length() == l)
+                .mapValues(s -> s.substring(finalI, finalJ))
                 .filter(s -> s._1.equals(pType))
                 .mapToPair(s -> new Tuple2<>(s._2, 1))
                 .reduceByKey((x, y) -> x+y);  // x
         JavaRDD<String> ave = pair
-                .map(data -> data._1 + " " + data._2);
+                .map(data -> data._1 + " " + data._2)
+                .coalesce(1);
 
         ave.saveAsTextFile(output);
-        ave.collect(); 
+        // ave.collect(); 
 
         //stop sc
         sc.stop();

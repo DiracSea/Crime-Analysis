@@ -32,7 +32,7 @@ public class wordCount {
     }
     public void single_count(String input, String pType, Type type, String output) {
         // ID:0; case:1; data:2; block:3; pType:5; desc:6; location:7; district:11; ward:12; community:13
-        int num = 0;
+        int num = 0;	
         switch (type) {
             case location: // single
                 num = 7;

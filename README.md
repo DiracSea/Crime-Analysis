@@ -5,6 +5,7 @@ This is a course project :sparkles:
 
 ## **Members** :student:
 Longze Su
+Xu Chen
  
 ## **Data Collection** :floppy_disk:
 

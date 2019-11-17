@@ -4,11 +4,8 @@
 This is a course project :sparkles:
 
 ## **Members** :student:
-Yuanhao Chang
-
 Lei Zhang
 
-Shiyi Cheng
 ## **Data Collection** :floppy_disk:
 
 ## **Data Preprocessing** :thermometer: 

@@ -6,7 +6,7 @@ public class execute {
         /*
         * 0: input
         * 1: primary ptype
-        * 2: output ward
+        * 2: output ward 
         * 3: output block
         * 4: output district
         * 5: output time month
@@ -16,7 +16,7 @@ public class execute {
         * */
         // ward, location, block, district, month, day, community
         String input = args[0], output = args[1]; 
-        wordCount w = new wordCount();
+        wordCount w = new wordCount(); 
         String[] ps = {"NARCOTICS", "THEFT"}; 
         // ward
         // w.count(input, pType, Type.ward, output+"/ward");
@@ -25,10 +25,10 @@ public class execute {
         // w.count(input, pType, Type.location, output+"/location");
         // w.count(input, pType, Type.community, output+"/community");
         for (String p: ps) {
-            w.count(input, p, Type.block, output+"/block/"+p);
-            // w.count(input, p, Type.month, output+"/month/"+p);
-            // w.count(input, p, Type.day, output+"/day/"+p); 
-            // w.count(input, p, Type.hour, output+"/hour/"+p); 
+            // w.count(input, p, Type.block, output+"/block/"+p);
+            w.count(input, p, Type.month, output+"/month/"+p);
+            w.count(input, p, Type.day, output+"/day/"+p); 
+            w.count(input, p, Type.hour, output+"/hour/"+p); 
             // w.count(input, pType, Type.monthday, output+"/monthday"+pType); 
         }
 

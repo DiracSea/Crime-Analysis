@@ -6,6 +6,7 @@ This is a course project :sparkles:
 ## **Members** :student:
 Longze Su
 Xu Chen
+Kexin Wang
  
 ## **Data Collection** :floppy_disk:
 

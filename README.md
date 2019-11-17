@@ -6,7 +6,7 @@ This is a course project :sparkles:
 ## **Members** :student:
 Longze Su
 Xu Chen
- 
+Chuliang Zhang
 ## **Data Collection** :floppy_disk:
 
 ## **Data Preprocessing** :thermometer: 

@@ -6,6 +6,7 @@ This is a course project :sparkles:
 ## **Members** :student:
 Yuanhao Chang
 
+Lei Zhang
  
 ## **Data Collection** :floppy_disk:
 

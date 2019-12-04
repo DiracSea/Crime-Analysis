@@ -143,8 +143,8 @@ public class wordCount {
                 break;
             case hour: 
                 l = l1; 
-                i = 11
-                j = 11;
+                i = 11; 
+                j = 13;
                 break; 
 
         }

@@ -7,7 +7,7 @@ This is a course project :sparkles:
 put crime.csv in the src file
 
 **if not at the same path**
-```
+```python
 import sys
 import os 
 import read_crime

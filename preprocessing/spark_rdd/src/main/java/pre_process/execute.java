@@ -25,9 +25,9 @@ public class execute {
         // w.count(input, pType, Type.district, output+"/district");
         // w.count(input, pType, Type.location, output+"/location");
         // w.count(input, pType, Type.community, output+"/community");
-        // w.count(input, pType, Type.month, output+"/month");
-        // w.count(input, pType, Type.day, output+"/day"); 
+        w.count(input, pType, Type.month, output+"/month");
+        w.count(input, pType, Type.day, output+"/day"); 
         w.count(input, pType, Type.hour, output+"/hour"); 
-        // w.count(input, pType, Type.monthday, output+"/monthday"); 
+        w.count(input, pType, Type.monthday, output+"/monthday"); 
     }
 }

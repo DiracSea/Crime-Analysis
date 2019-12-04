@@ -149,7 +149,7 @@ public class wordCount {
                 j = 5;
                 break;
             case monthday: 
-                l = l1; 
+                l = l3; 
                 i = 0; 
                 j = 5;
                 break; 
@@ -174,24 +174,27 @@ public class wordCount {
                     // .filter(s -> s._1.equals(pType))
                     .mapToPair(s -> new Tuple2<>(s._2, 1))
                     .reduceByKey((x, y) -> x+y);  // x
-        if (pType != "0")
-            pair = in1
-                    .map(s -> s.split(","))
-                    .mapToPair(s -> new Tuple2<>(s[5], s[num]))
-                    .filter(s -> s._2().length() >= finalL)
-                    .mapValues(s -> s.substring(finalI, finalJ))
-                    .filter(s -> s._1.equals(pType))
-                    .mapToPair(s -> new Tuple2<>(s._2, 1))
-                    .reduceByKey((x, y) -> x+y);  // x
-        else 
-            pair = in1
-                    .map(s -> s.split(","))
-                    .mapToPair(s -> new Tuple2<>(s[5], s[num]))
-                    .filter(s -> s._2().length() >= finalL)
-                    .mapValues(s -> s.substring(finalI, finalJ))
-                    // .filter(s -> s._1.equals(pType))
-                    .mapToPair(s -> new Tuple2<>(s._2, 1))
-                    .reduceByKey((x, y) -> x+y);  // x
+        else {
+            if (pType != "0")
+                pair = in1
+                        .map(s -> s.split(","))
+                        .mapToPair(s -> new Tuple2<>(s[5], s[num]))
+                        .filter(s -> s._2().length() >= finalL)
+                        .mapValues(s -> s.substring(finalI, finalJ))
+                        .filter(s -> s._1.equals(pType))
+                        .mapToPair(s -> new Tuple2<>(s._2, 1))
+                        .reduceByKey((x, y) -> x+y);  // x
+            else 
+                pair = in1
+                        .map(s -> s.split(","))
+                        .mapToPair(s -> new Tuple2<>(s[5], s[num]))
+                        .filter(s -> s._2().length() >= finalL)
+                        .mapValues(s -> s.substring(finalI, finalJ))
+                        // .filter(s -> s._1.equals(pType))
+                        .mapToPair(s -> new Tuple2<>(s._2, 1))
+                        .reduceByKey((x, y) -> x+y);  // x
+        }
+
 
         JavaRDD<String> ave = pair
                 .map(data -> data._1 + " " + data._2)

@@ -3,6 +3,33 @@
 
 This is a course project :sparkles:
 
+## Data Fetch
+put crime.csv in the src file
+
+```python
+import input as input
+path = r"src\crime.csv"
+i = input.Input(path)
+print(i.data_extract())
+```
+
+```python
+class Input(object):
+    path = r"src\crime.csv"
+    def __init__(self, path):
+    def data_extract(self, row_num = 0, col_name = 0, year = 0, nan_not_allowed = 0, primary_type = 0, time_range = 0, arrest = 0):
+        ''' 
+        path: 路径，默认为相对路径
+        col_name：列选择， 默认为所有有用列
+        year：年份选择2001-2018，默认为所有时间
+        nan_not_allowed：是否允许空值，默认允许，如果不允许则设为 1
+        row_num：行数，默认全部行
+        primary_type：犯罪类型，一共26种，默认全部
+        time_range：时间范围，格式如['2017-03-20', '2017-12-01']，默认全部
+        arrest：是否抓捕-1 没有， 1 有， 默认全部
+        '''
+```
+
 ## **Members** :student:
 Longze Su
 

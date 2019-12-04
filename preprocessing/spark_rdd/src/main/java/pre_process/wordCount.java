@@ -8,7 +8,7 @@ import scala.Tuple2;
 
 public class wordCount {
     public enum Type {
-        ward, location, block, district, month, day, community
+        ward, location, block, district, month, day, community, hour
     }
     public void count (String input, String pType, Type type, String output) {
         // ID:0; case:1; data:2; block:3; pType:5; desc:6; location:7; district:11; ward:12; community:13
@@ -25,6 +25,7 @@ public class wordCount {
                 break;
             case month: // not
             case day: // not
+            case hour: 
                 time_count(input,pType,type,output);
                 break;
         }
@@ -124,15 +125,28 @@ public class wordCount {
         // ID:0; case:1; data:2; block:3; pType:5; desc:6; location:7; district:11; ward:12; community:13
 
         // 11/02/2019 11:59:00 PM
-        int l = "11/02/2019 11:59:00 PM".length(); 
-        int i = 0, j = l;
+        int l1 = "11/02/2019 11".length(); 
+        int l2 = "11".length(); 
+        int l3 = "11/02".length(); 
+        int i = 0, j = 0, l = 0;
+
         switch (type) {
             case month:
-                j = 5;
+                l = l2; 
+                i = 0; 
+                j = 2;
                 break;
             case day:
-                i = 12;
+                l = l3; 
+                i = 3;
+                j = 5;
                 break;
+            case hour: 
+                l = l1; 
+                i = 11
+                j = 11;
+                break; 
+
         }
 
         int num = 2;
@@ -149,7 +163,7 @@ public class wordCount {
             pair = in1
                     .map(s -> s.split(","))
                     .mapToPair(s -> new Tuple2<>(s[5], s[num]))
-                    .filter(s -> s._2().length() == l)
+                    .filter(s -> s._2().length() >= l)
                     .mapValues(s -> s.substring(finalI, finalJ))
                     .filter(s -> s._1.equals(pType))
                     .mapToPair(s -> new Tuple2<>(s._2, 1))

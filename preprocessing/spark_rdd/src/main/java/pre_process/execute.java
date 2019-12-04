@@ -19,12 +19,13 @@ public class execute {
 
         wordCount w = new wordCount();
         // ward
-        w.count(input, pType, Type.ward, output+"/ward");
-        w.count(input, pType, Type.block, output+"/block");
-        w.count(input, pType, Type.district, output+"/district");
-        w.count(input, pType, Type.location, output+"/location");
-        w.count(input, pType, Type.community, output+"/community");
+        // w.count(input, pType, Type.ward, output+"/ward");
+        // w.count(input, pType, Type.block, output+"/block");
+        // w.count(input, pType, Type.district, output+"/district");
+        // w.count(input, pType, Type.location, output+"/location");
+        // w.count(input, pType, Type.community, output+"/community");
         w.count(input, pType, Type.month, output+"/month");
         w.count(input, pType, Type.day, output+"/day"); 
+        w.count(input, pType, Type.hour, output+"/hour"); 
     }
 }

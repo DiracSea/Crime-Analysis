@@ -133,6 +133,11 @@ public class wordCount {
         int m = 20, n = 22; 
 
         switch (type) {
+            case hour: 
+                l = l1; 
+                i = 11; 
+                j = 13;
+                break; 
             case month:
                 l = l2; 
                 i = 0; 
@@ -143,11 +148,6 @@ public class wordCount {
                 i = 3;
                 j = 5;
                 break;
-            case hour: 
-                l = l1; 
-                i = 11; 
-                j = 13;
-                break; 
             case monthday: 
                 l = l1; 
                 i = 0; 
@@ -165,7 +165,7 @@ public class wordCount {
         int finalI = i;
         int finalJ = j;
         JavaPairRDD<String, Integer> pair = null; 
-        if (type == Type.hour)
+        if (l == l1)
             pair = in1
                     .map(s -> s.split(","))
                     .mapToPair(s -> new Tuple2<>(s[5], s[num]))

@@ -26,10 +26,10 @@ public class execute {
         // w.count(input, pType, Type.district, output+"/district");
         // w.count(input, pType, Type.location, output+"/location");
         // w.count(input, pType, Type.community, output+"/community");
-        for (pType : ps) {
-            w.count(input, pType, Type.month, output+"/month/"+pType);
-            w.count(input, pType, Type.day, output+"/day"+pType); 
-            w.count(input, pType, Type.hour, output+"/hour"+pType); 
+        for (String p: ps) {
+            w.count(input, p, Type.month, output+"/month/"+pType);
+            w.count(input, p, Type.day, output+"/day"+pType); 
+            w.count(input, p, Type.hour, output+"/hour"+pType); 
             // w.count(input, pType, Type.monthday, output+"/monthday"+pType); 
         }
 

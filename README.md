@@ -20,9 +20,9 @@ print(i.data_extract(0,0))
 
 **if at the path**
 ```python
-import input as input
+import read_crime
 path = r"src\crime.csv"
-i = input.Input(path)
+i = read_crime.Input(path)
 print(i.data_extract())
 ```
 

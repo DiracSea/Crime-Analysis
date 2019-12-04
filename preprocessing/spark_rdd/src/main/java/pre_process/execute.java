@@ -19,15 +19,19 @@ public class execute {
         System.out.println(pType == "=====================warning!==================="); 
         System.out.println(pType == "0"); 
         wordCount w = new wordCount();
+        ps = ["NARCOTICS", "NON-CRIMINAL", "DECEPTIVE PRACTICE", "THEFT", "SEX OFFENSE", "BURGLARY", "ASSAULT", "BATTERY", "ROBBERY", "WEAPONS VIOLATION"]
         // ward
         // w.count(input, pType, Type.ward, output+"/ward");
         // w.count(input, pType, Type.block, output+"/block");
         // w.count(input, pType, Type.district, output+"/district");
         // w.count(input, pType, Type.location, output+"/location");
         // w.count(input, pType, Type.community, output+"/community");
-        w.count(input, pType, Type.month, output+"/month");
-        w.count(input, pType, Type.day, output+"/day"); 
-        w.count(input, pType, Type.hour, output+"/hour"); 
-        w.count(input, pType, Type.monthday, output+"/monthday"); 
+        for (pType : ps) {
+            w.count(input, pType, Type.month, output+"/month/"+pType);
+            w.count(input, pType, Type.day, output+"/day"+pType); 
+            w.count(input, pType, Type.hour, output+"/hour"+pType); 
+            // w.count(input, pType, Type.monthday, output+"/monthday"+pType); 
+        }
+
     }
 }

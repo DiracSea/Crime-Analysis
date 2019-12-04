@@ -6,6 +6,19 @@ This is a course project :sparkles:
 ## Data Fetch
 put crime.csv in the src file
 
+**if not at the same path**
+```
+import sys
+import os 
+import read_crime
+
+sys.path.append(os.path.abspath("ca/pro_data"))
+print(sys.path)
+i = read_crime.Input(r'crime.csv')
+print(i.data_extract(0,0))
+```
+
+**if at the path**
 ```python
 import input as input
 path = r"src\crime.csv"

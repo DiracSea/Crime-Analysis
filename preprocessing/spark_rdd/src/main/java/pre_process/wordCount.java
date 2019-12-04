@@ -8,7 +8,7 @@ import scala.Tuple2;
 
 public class wordCount {
     public enum Type {
-        ward, location, block, district, month, day, community, hour
+        ward, location, block, district, month, day, community, hour, monthday
     }
     public void count (String input, String pType, Type type, String output) {
         // ID:0; case:1; data:2; block:3; pType:5; desc:6; location:7; district:11; ward:12; community:13
@@ -26,6 +26,7 @@ public class wordCount {
             case month: // not
             case day: // not
             case hour: 
+            case monthday: 
                 time_count(input,pType,type,output);
                 break;
         }
@@ -57,7 +58,7 @@ public class wordCount {
 
         int finalNum = num;
         JavaPairRDD<String, Integer> pair = null; 
-        if (pType == "0")
+        if (pType != "0")
             pair = in1
                     .map(s -> s.split(","))
                     .mapToPair(s -> new Tuple2<>(s[5], s[finalNum]))
@@ -92,7 +93,7 @@ public class wordCount {
         JavaRDD<String> in1 = in.filter(s -> s != header);
         JavaPairRDD<String, Integer> pair = null; 
         //word count
-        if (pType == "0")
+        if (pType != "0")
             pair = in1
                     .map(s -> s.split(","))
                     .mapToPair(s -> new Tuple2<>(s[5], s[num]))
@@ -146,7 +147,11 @@ public class wordCount {
                 i = 11; 
                 j = 13;
                 break; 
-
+            case monthday: 
+                l = l1; 
+                i = 0; 
+                j = 5;
+                break; 
         }
 
         int num = 2;
@@ -159,7 +164,7 @@ public class wordCount {
         int finalI = i;
         int finalJ = j;
         JavaPairRDD<String, Integer> pair = null; 
-        if (pType == "0")
+        if (pType != "0")
             pair = in1
                     .map(s -> s.split(","))
                     .mapToPair(s -> new Tuple2<>(s[5], s[num]))

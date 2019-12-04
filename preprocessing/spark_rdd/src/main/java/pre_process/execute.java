@@ -25,6 +25,6 @@ public class execute {
         w.count(input, pType, Type.location, args[7]);
         w.count(input, pType, Type.community, args[8]);
         w.count(input, pType, Type.month, args[5]);
-        w.count(input, pType, Type.day, args[6]);
+        w.count(input, pType, Type.day, args[6]); 
     }
 }

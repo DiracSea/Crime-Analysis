@@ -15,16 +15,16 @@ public class execute {
         * 8: output community
         * */
         // ward, location, block, district, month, day, community
-        String input = args[0], pType = args[1];
+        String input = args[0], output = args[1], pType = args[2];
 
         wordCount w = new wordCount();
         // ward
-        w.count(input, pType, Type.ward, args[2]);
-        w.count(input, pType, Type.block, args[3]);
-        w.count(input, pType, Type.district, args[4]);
-        w.count(input, pType, Type.location, args[7]);
-        w.count(input, pType, Type.community, args[8]);
-        w.count(input, pType, Type.month, args[5]);
-        w.count(input, pType, Type.day, args[6]); 
+        w.count(input, pType, Type.ward, output+'/ward');
+        w.count(input, pType, Type.block, output+'/block');
+        w.count(input, pType, Type.district, output+'/district');
+        w.count(input, pType, Type.location, output+'/location');
+        w.count(input, pType, Type.community, output+'/community');
+        w.count(input, pType, Type.month, output+'/month');
+        w.count(input, pType, Type.day, output+'/day'); 
     }
 }

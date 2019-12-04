@@ -15,8 +15,8 @@ public class execute {
         * 8: output community
         * */
         // ward, location, block, district, month, day, community
-        String input = args[0], output = args[1], pType = args[2];
-
+        String input = args[0], output = args[1], pType = args[2]
+        System.out.println(pType == "0"); 
         wordCount w = new wordCount();
         // ward
         w.count(input, pType, Type.ward, output+"/ward");

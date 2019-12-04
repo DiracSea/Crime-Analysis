@@ -126,10 +126,11 @@ public class wordCount {
         // ID:0; case:1; data:2; block:3; pType:5; desc:6; location:7; district:11; ward:12; community:13
 
         // 11/02/2019 11:59:00 PM
-        int l1 = "11/02/2019 11".length(); 
+        int l1 = "11/02/2019 11:07:32 PM".length(); 
         int l2 = "11".length(); 
         int l3 = "11/02".length(); 
         int i = 0, j = 0, l = 0;
+        int m = 20, n = 22; 
 
         switch (type) {
             case month:
@@ -164,6 +165,15 @@ public class wordCount {
         int finalI = i;
         int finalJ = j;
         JavaPairRDD<String, Integer> pair = null; 
+        if (type == Type.hour)
+            pair = in1
+                    .map(s -> s.split(","))
+                    .mapToPair(s -> new Tuple2<>(s[5], s[num]))
+                    .filter(s -> s._2().length() >= finalL)
+                    .mapValues(s -> s.substring(finalI, finalJ) + s.substring(m, n))
+                    // .filter(s -> s._1.equals(pType))
+                    .mapToPair(s -> new Tuple2<>(s._2, 1))
+                    .reduceByKey((x, y) -> x+y);  // x
         if (pType != "0")
             pair = in1
                     .map(s -> s.split(","))
@@ -177,7 +187,7 @@ public class wordCount {
             pair = in1
                     .map(s -> s.split(","))
                     .mapToPair(s -> new Tuple2<>(s[5], s[num]))
-                    .filter(s -> s._2().length() == finalL)
+                    .filter(s -> s._2().length() >= finalL)
                     .mapValues(s -> s.substring(finalI, finalJ))
                     // .filter(s -> s._1.equals(pType))
                     .mapToPair(s -> new Tuple2<>(s._2, 1))

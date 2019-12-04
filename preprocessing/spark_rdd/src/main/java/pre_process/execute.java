@@ -19,7 +19,7 @@ public class execute {
         System.out.println(pType == "=====================warning!==================="); 
         System.out.println(pType == "0"); 
         wordCount w = new wordCount();
-        ps = ["NARCOTICS", "NON-CRIMINAL", "DECEPTIVE PRACTICE", "THEFT", "SEX OFFENSE", "BURGLARY", "ASSAULT", "BATTERY", "ROBBERY", "WEAPONS VIOLATION"]; 
+        String[] ps = ["NARCOTICS", "NON-CRIMINAL", "DECEPTIVE PRACTICE", "THEFT", "SEX OFFENSE", "BURGLARY", "ASSAULT", "BATTERY", "ROBBERY", "WEAPONS VIOLATION"]; 
         // ward
         // w.count(input, pType, Type.ward, output+"/ward");
         // w.count(input, pType, Type.block, output+"/block");

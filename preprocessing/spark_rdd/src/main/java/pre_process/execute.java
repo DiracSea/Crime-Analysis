@@ -15,9 +15,8 @@ public class execute {
         * 8: output community
         * */
         // ward, location, block, district, month, day, community
-        String input = args[0], output = args[1], pType = "0"; 
+        String input = args[0], output = args[1]; 
         System.out.println(pType == "=====================warning!==================="); 
-        System.out.println(pType == "0"); 
         wordCount w = new wordCount();
         String[] ps = {"NARCOTICS", "THEFT"}; 
         // ward

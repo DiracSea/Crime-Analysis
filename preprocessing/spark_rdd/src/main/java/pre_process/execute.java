@@ -19,7 +19,7 @@ public class execute {
         System.out.println(pType == "=====================warning!==================="); 
         System.out.println(pType == "0"); 
         wordCount w = new wordCount();
-        String[] ps = {"NARCOTICS", "NON-CRIMINAL", "DECEPTIVE PRACTICE", "THEFT", "SEX OFFENSE", "BURGLARY", "ASSAULT", "BATTERY", "ROBBERY", "WEAPONS VIOLATION"}; 
+        String[] ps = {"NARCOTICS", "THEFT"}; 
         // ward
         // w.count(input, pType, Type.ward, output+"/ward");
         // w.count(input, pType, Type.block, output+"/block");
@@ -27,9 +27,10 @@ public class execute {
         // w.count(input, pType, Type.location, output+"/location");
         // w.count(input, pType, Type.community, output+"/community");
         for (String p: ps) {
-            w.count(input, p, Type.month, output+"/month/"+p);
-            w.count(input, p, Type.day, output+"/day/"+p); 
-            w.count(input, p, Type.hour, output+"/hour/"+p); 
+            w.count(input, p, Type.block, output+"/block/"+p);
+            // w.count(input, p, Type.month, output+"/month/"+p);
+            // w.count(input, p, Type.day, output+"/day/"+p); 
+            // w.count(input, p, Type.hour, output+"/hour/"+p); 
             // w.count(input, pType, Type.monthday, output+"/monthday"+pType); 
         }
 

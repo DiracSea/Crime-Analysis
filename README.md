@@ -58,8 +58,13 @@ Shiyi Cheng
 
 Yuanhao Chang
 
+<<<<<<< HEAD
 Chiyuan Ma
 
+=======
+Lei Zhang
+ 
+>>>>>>> updata
 ## **Data Collection** :floppy_disk:
 
 ## **Data Preprocessing** :thermometer: 

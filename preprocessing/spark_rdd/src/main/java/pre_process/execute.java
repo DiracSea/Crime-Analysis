@@ -26,9 +26,9 @@ public class execute {
         // w.count(input, pType, Type.community, output+"/community");
         for (String p: ps) {
             // w.count(input, p, Type.block, output+"/block/"+p);
-            w.count(input, p, Type.month, output+"/month/"+p);
-            w.count(input, p, Type.day, output+"/day/"+p); 
-            w.count(input, p, Type.hour, output+"/hour/"+p); 
+            // w.count(input, p, Type.month, output+"/month/"+p);
+            // w.count(input, p, Type.day, output+"/day/"+p); 
+            w.count(input, p, Type.hour, output+"/hour1/"+p); 
             // w.count(input, pType, Type.monthday, output+"/monthday"+pType); 
         }
 

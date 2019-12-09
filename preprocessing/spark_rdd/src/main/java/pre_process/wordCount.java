@@ -176,14 +176,14 @@ public class wordCount {
                     .reduceByKey((x, y) -> x+y);  // x
         else 
         //     if (pType != "0")
-                pair = in1
-                        .map(s -> s.split(","))
-                        .mapToPair(s -> new Tuple2<>(s[5], s[num]))
-                        .filter(s -> s._2().length() >= finalL)
-                        .mapValues(s -> s.substring(finalI, finalJ))
-                        .filter(s -> s._1.equals(pType))
-                        .mapToPair(s -> new Tuple2<>(s._2, 1))
-                        .reduceByKey((x, y) -> x+y);  // x
+            pair = in1
+                    .map(s -> s.split(","))
+                    .mapToPair(s -> new Tuple2<>(s[5], s[num]))
+                    .filter(s -> s._2().length() >= finalL)
+                    .mapValues(s -> s.substring(finalI, finalJ))
+                    .filter(s -> s._1.equals(pType))
+                    .mapToPair(s -> new Tuple2<>(s._2, 1))
+                    .reduceByKey((x, y) -> x+y);  // x
         //     else 
         //         pair = in1
         //                 .map(s -> s.split(","))

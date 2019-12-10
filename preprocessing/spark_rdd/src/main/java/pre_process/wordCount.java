@@ -8,7 +8,7 @@ import scala.Tuple2;
 
 public class wordCount {
     public enum Type {
-        ward, location, block, district, month, day, community
+        ward, location, block, district, month, day, community, hour, monthday
     }
     public void count (String input, String pType, Type type, String output) {
         // ID:0; case:1; data:2; block:3; pType:5; desc:6; location:7; district:11; ward:12; community:13
@@ -25,6 +25,8 @@ public class wordCount {
                 break;
             case month: // not
             case day: // not
+            case hour: 
+            case monthday: 
                 time_count(input,pType,type,output);
                 break;
         }
@@ -55,13 +57,21 @@ public class wordCount {
         //word count
 
         int finalNum = num;
-        JavaPairRDD<String, Integer> pair = in1
-                .map(s -> s.split(","))
-                .mapToPair(s -> new Tuple2<>(s[5], s[finalNum]))
-                .filter(s -> s._1.equals(pType))
-                .mapToPair(s -> new Tuple2<>(s._2, 1))
-                .reduceByKey((x, y) -> x+y);  // x 1st element, y 2nd element
-
+        JavaPairRDD<String, Integer> pair = null; 
+        // if (pType != "0")
+            pair = in1
+                    .map(s -> s.split(","))
+                    .mapToPair(s -> new Tuple2<>(s[5], s[finalNum]))
+                    .filter(s -> s._1.equals(pType))
+                    .mapToPair(s -> new Tuple2<>(s._2, 1))
+                    .reduceByKey((x, y) -> x+y);  // x 1st element, y 2nd element
+        // else 
+        //     pair = in1
+        //             .map(s -> s.split(","))
+        //             .mapToPair(s -> new Tuple2<>(s[5], s[finalNum]))
+        //             // .filter(s -> s._1.equals(pType))
+        //             .mapToPair(s -> new Tuple2<>(s._2, 1))
+        //             .reduceByKey((x, y) -> x+y);  // x 1st element, y 2nd element
         JavaRDD<String> ave = pair
                 .map(data -> data._1 + " " + data._2)
                 .coalesce(1);
@@ -81,8 +91,10 @@ public class wordCount {
         JavaRDD<String> in = sc.textFile(input);
         String header = in.first();
         JavaRDD<String> in1 = in.filter(s -> s != header);
+        JavaPairRDD<String, Integer> pair = null; 
         //word count
-        JavaPairRDD<String, Integer> pair = in1
+        // if (pType != "0")
+        pair = in1
                 .map(s -> s.split(","))
                 .mapToPair(s -> new Tuple2<>(s[5], s[num]))
                 .filter(s -> s._2.length()>12)
@@ -90,8 +102,17 @@ public class wordCount {
                 .filter(s -> s._1.equals(pType))
                 .mapToPair(s -> new Tuple2<>(s._2, 1))
                 .reduceByKey((x, y) -> x+y);  // x
+        // else 
+        //     pair = in1
+        //             .map(s -> s.split(","))
+        //             .mapToPair(s -> new Tuple2<>(s[5], s[num]))
+        //             .filter(s -> s._2.length()>12)
+        //             .mapValues(s -> s.substring(8))
+        //             // .filter(s -> s._1.equals(pType))
+        //             .mapToPair(s -> new Tuple2<>(s._2, 1))
+        //             .reduceByKey((x, y) -> x+y);  // x
 
-        JavaRDD<String> ave = pair
+        JavaRDD<String> ave = pair 
                 .map(data -> data._1 + " " + data._2)
                 .coalesce(1);
 
@@ -105,15 +126,33 @@ public class wordCount {
         // ID:0; case:1; data:2; block:3; pType:5; desc:6; location:7; district:11; ward:12; community:13
 
         // 11/02/2019 11:59:00 PM
-        int l = "11/02/2019 11:59:00 PM".length(); 
-        int i = 0, j = l;
+        int l1 = "11/02/2019 11:07:32 PM".length(); 
+        int l2 = "11".length(); 
+        int l3 = "11/02".length(); 
+        int i = 0, j = 0, l = 0;
+        int m = 20, n = 22; 
+
         switch (type) {
+            case hour: 
+                l = l1; 
+                i = 11; 
+                j = 13;
+                break; 
             case month:
-                j = 5;
+                l = l2; 
+                i = 0; 
+                j = 2;
                 break;
             case day:
-                i = 12;
+                l = l3; 
+                i = 3;
+                j = 5;
                 break;
+            case monthday: 
+                l = l3; 
+                i = 0; 
+                j = 5;
+                break; 
         }
 
         int num = 2;
@@ -122,17 +161,41 @@ public class wordCount {
         String header = in.first();
         JavaRDD<String> in1 = in.filter(s -> s != header);
         //word count
-
+        int finalL = l; 
         int finalI = i;
         int finalJ = j;
-        JavaPairRDD<String, Integer> pair = in1
-                .map(s -> s.split(","))
-                .mapToPair(s -> new Tuple2<>(s[5], s[num]))
-                .filter(s -> s._2().length() == l)
-                .mapValues(s -> s.substring(finalI, finalJ))
-                .filter(s -> s._1.equals(pType))
-                .mapToPair(s -> new Tuple2<>(s._2, 1))
-                .reduceByKey((x, y) -> x+y);  // x
+        JavaPairRDD<String, Integer> pair = null; 
+        if (l == l1)
+            pair = in1
+                    .map(s -> s.split(","))
+                    .mapToPair(s -> new Tuple2<>(s[5], s[num]))
+                    .filter(s -> s._2().length() >= finalL)
+                    .mapValues(s -> s.substring(finalI, finalJ) + s.substring(m, n))
+                    .filter(s -> s._1.equals(pType))
+                    .mapToPair(s -> new Tuple2<>(s._2, 1))
+                    .reduceByKey((x, y) -> x+y);  // x
+        else 
+        //     if (pType != "0")
+            pair = in1
+                    .map(s -> s.split(","))
+                    .mapToPair(s -> new Tuple2<>(s[5], s[num]))
+                    .filter(s -> s._2().length() >= finalL)
+                    .mapValues(s -> s.substring(finalI, finalJ))
+                    .filter(s -> s._1.equals(pType))
+                    .mapToPair(s -> new Tuple2<>(s._2, 1))
+                    .reduceByKey((x, y) -> x+y);  // x
+        //     else 
+        //         pair = in1
+        //                 .map(s -> s.split(","))
+        //                 .mapToPair(s -> new Tuple2<>(s[5], s[num]))
+        //                 .filter(s -> s._2().length() >= finalL)
+        //                 .mapValues(s -> s.substring(finalI, finalJ))
+        //                 // .filter(s -> s._1.equals(pType))
+        //                 .mapToPair(s -> new Tuple2<>(s._2, 1))
+        //                 .reduceByKey((x, y) -> x+y);  // x
+        // }
+
+
         JavaRDD<String> ave = pair
                 .map(data -> data._1 + " " + data._2)
                 .coalesce(1);

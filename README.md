@@ -42,28 +42,6 @@ class Input(object):
         '''
 ```
 
-## **Members** :student:
-Longze Su
-
-Xu Chen
-
-Chuliang Zhang
-
-Kexin Wang
-
-Lei Zhang
-
-Shiyi Cheng
-
-Yuanhao Chang
-
-<<<<<<< HEAD
-Chiyuan Ma
-
-=======
-Lei Zhang
- 
->>>>>>> updata
 ## **Data Collection** :floppy_disk:
 
 ## **Data Preprocessing** :thermometer: 
@@ -71,24 +49,24 @@ use spark to pre-precrossing data and get some statistical results. :fire::fire:
  - [x] Spark Code: 
 spark-submit --class pre_process.execute target/lsu018-1.0-SNAPSHOT.jar /data/data/crime.csv THEFT /data/output/ward /data/output/block /data/output/district /data/output/month /data/output/day /data/output/location /data/output/community
  - [x] ~~Data Cleansing, got from database, do not need cleansing~~
- - [ ] Data Reduction 
- - [ ] Data Transformation
- - [ ] Data Integration
+ - [x] Data Reduction 
+ - [x] Data Transformation
+ - [x] Data Integration
  
 ## Algorithms :desktop_computer:
 Problem Solver is Good Algorithm
-- [ ] FFT
+- [x] DFT
 - [ ] kNN
-- [ ] K-means
+- [x] K-means
 - [ ] Random Forest
-- [ ] RNN
+- [x] RNN
 - [ ] Sentiment Analysis
 - [ ] A* Search
 
 ## Visualization :bar_chart:
 Good-looking
-- [ ] Map Visualization :world_map:
-- [ ] WordCloud Visualization :cloud: 
-- [ ] Time Series Visualization :hourglass:
+- [x] Map Visualization :world_map:
+- [x] WordCloud Visualization :cloud: 
+- [x] Time Series Visualization :hourglass:
 - [ ] Correlation Visualization :butterfly:
 - [ ] TreeMap Visualization :palm_tree:

@@ -57,6 +57,7 @@ spark-submit --class pre_process.execute target/lsu018-1.0-SNAPSHOT.jar /data/da
 Problem Solver is Good Algorithm
 - [x] DFT
 - [ ] kNN
+- [x] DBscan
 - [x] K-means
 - [ ] Random Forest
 - [x] RNN
